@@ -240,6 +240,32 @@
 
     </div>
   </section>
+  <button onclick="payWithPaystack()" class="btn">
+  Pay Now
+</button>
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<script>
+function payWithPaystack() {
+  let handler = PaystackPop.setup({
+    key: 'YOUR_PUBLIC_KEY',
+    email: 'customer@email.com',
+    amount: 12000,
+    currency: 'GHS',
+
+    callback: function(response){
+      alert('Payment successful!');
+    },
+
+    onClose: function(){
+      alert('Transaction cancelled');
+    }
+  });
+
+  handler.openIframe();
+}
+</script>
 
   <section id="about">
     <h2 class="section-title">About Us</h2>
